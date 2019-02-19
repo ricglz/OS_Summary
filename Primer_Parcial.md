@@ -30,3 +30,21 @@
   - Tiempo de usuario: CPU en modo usuario.
   - Tiempo de sistema: CPU en modo privilegiado.
   - Tiempo en CPU = tUsuario + tSistema
+5. ***Interrupciones***
+  - Una interupción es una señal de voltaje que altera la secuencia de ejecución.
+  - Se interrumpe el proceso actual, guarda su estado, atiende la interupción, recupera el estado.
+  - Cambio de contexto: Cuando se intercambia proceso de CPU por otro.
+  - No siempre se saca el proceso del CPU (Esto pasa si hay un esquema de prioridades).
+  - Tipos de interrupciones:
+    - Hardware: Estas señales son emitidas por algún dispositivo de hardware.
+    - Excepciones: Traps/errors
+    - Software: SVC
+6. ***Multithreading***
+  - El multithreading es la capacidad del SO de manejar múltiples hilos de ejecución ó threads.
+  - Ventajas:
+    - Paralelismo: Ejecutar más de un proceso a la vez.
+    - Traslape de I/O.
+  - Single Thr + 1 CPU: mejora si I/O (por traslape)
+  - Single Thr + N CPU: mejora, cada proceso en dif CPU
+  - Multi  Thr + 1 CPU: mejora si I/O, sino empeora
+  - Multi  Thr + N CPU: maxima mejora
