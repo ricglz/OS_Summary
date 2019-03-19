@@ -15,7 +15,7 @@
       - Test-and-set
       - Swap
   - Mejor algoritmo para 2 procesos:
-    `
+    ```pseudo
     // Proceso 0
     Begin
     repeat
@@ -38,9 +38,9 @@
       flag[0]:=false
     until false;
     end
-    `
+    ```
   - El algoritmo del repostero garantiza que teniendo n procesos, esos n procesos van a compartir eficientemente algún o algunos recursos.
-    `
+    ```pseudo
     status[i]:=true;
     turno[i]:=max(turno[0], turno[1], ..., turno[n-1]) + 1; // Asigna el siguiente turno
     status[i]:=false;
@@ -49,7 +49,7 @@
      while status[i] do no-op;
      while turno[j] != 0 and turno[j] < turno[i] do no-op;
     end
-    `
+    ```
   - Pasos para verificar que el algoritmo de sincronización funciona correctamente:
     1. ¿Qué pasa si P1 llega primero que P2 a la sección crítica?
     2. ¿Qué pasa si P2 llega primero que P1 a la sección crítica?
@@ -68,7 +68,7 @@
     - Los semáforos binarios pueden tomar únicamente los valores 0 y 1.
     - Los semáforos generales pueden tomar valores enteros positivos y negativos.
   - Uso correcto de semáforos:
-    `
+    ```pseudo
     Var S: Semáforo_Binario;
     InitSemaphore(S, 1);
     Proceso P1;
@@ -77,10 +77,10 @@
       //Sección crítica
       V(S)
     END
-    `
+    ```
   - Cuando un semáforo está en valores negativos indica que ya no hay recursos disponibles, de manera que detiene el proceso hasta que haya nuevos.
   - Algoritmo productor-consumidor con semáforos:
-    `
+    ```pseudo
     int saca, agrega, dato, dato1, buff[100];
     Var ocupados, disponibles: semaforo_gral;
     Var buffer: semaforo_binario;
@@ -109,13 +109,13 @@
         V(disponibles);
       end
     end
-    `
+    ```
 4. ***Introducción a monitores***
   - Los monitores son tipos de datos abstractos.
   - Las variables del monitor sólo pueden ser accesadas por los procedimientos del mismo.
   - Sólo puede haber una función ejecutándose en el monitor, garantizando la exclusión mútua.
   - Ejemplo de código de un monitor:
-    `
+    ```pseudo
     Monitor x();
     rutina_1(){
 
@@ -124,7 +124,7 @@
 
     }
     end_monitor;
-    `
+    ```
   - Hay 3 posibles clases de filas en un monitor: De entrada, de variables de condición, especial.
     1. Fila de entrada: Se bloquean los procesos que hacen una invocación a una rutina del monitor pero que no pueden entrar debido a que hay otro proceso.
     2. Variables de condición:
