@@ -7,4 +7,4 @@ It was done with the objective to help students at ITESM to study for their exam
 
 1. [Introduction](Primer_Parcial.md)
 2. [Sincronization](Segundo_Parcial.md)
-3. [Memory Managemente](Tercer_Parcial.md)
+3. [Memory Management](Tercer_Parcial.md)
