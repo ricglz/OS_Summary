@@ -50,8 +50,33 @@
     1. Obtener los valores de p y d
       - Si la dirección virtual está en formato decimal. p = v / tam_pagina y d = v % tam_pagina
       - Si está en formato binario. Tenido que el tam_pagina = 2 ^ n, los primeros n dígitos de derecha a izquierda es d, los restantes son p.
-    2. Obtener el marco de página
-    3. Calcular la dirección real usando el marco de página y d
+    2. Verifcar que d sea menor que el tamaño de página. Si no lo es entonces hay un page overflow.
+    3. Obtener el marco de página
+    4. Calcular la dirección real usando el marco de página y d
       - Si la dirección virtual está en formato decimal. dir_real = marco_de_pagina * tam_pagina + d
-      - Si estña en formato bianrio. Se concatena el mp (marco de página) con d, de manera que si mp=111 y d=0000, dir_real=1110000
+      - Si está en formato bianrio. Se concatena el mp (marco de página) con d, de manera que si mp=111 y d=0000, dir_real=1110000
   - Las tablas de páginas son mantenidas en memoria principal.
+3. ***Segmentación***
+  - Cada proceso se divide en "secciones" llamados segmentos, pudiendo ser de diferente tamaño cada uno.
+  - La dirección virtual cuando se usa segmentación se expresa como **_v=(s, d)_**
+    - s siendo el número de segmento
+    - d el desplazamiento
+  - Estructura de la tabla de segmentos
+    - Bit de residencia
+    - Dirección en memoria secundaria
+    - Tamaño del segmento
+    - Bits de protección
+    - Dirección base del segmento en memoria real
+  - Bits de protección utilizados: R (Read), W (Write), E (Execute), A (Append)
+    - Cualquier combinación de estas es posible, a excepción que no se incluya R, pero que sí se permita W.
+  - Para obtener la dirección física a partir de la dirección virtual, se debe realizar lo siguiente
+    1. Obtener los valores de s y d. Para esto se debe usar un mapa del proceso, para ver cómo están divididos los segmentos y en qué direcciones.
+    2. Verificar que s está o no en memoria, sino es así sucede un Segmentation Fault.
+    3. Tras haber encontrado el segmento, verificar que d sea menor que la longitud del segmento, sino es así sucede un segmentation overflow
+    4. Obtener la base
+    5. Obtener la dirección real. Para esto se suma la base + d
+  - Se puede combinar segmentación con paginación.
+    - En este caso **_v=(s, p, d)_**
+      - s sería el segmento donde se encuentran las páginas
+      - p sería la página que se encuentra en el segmento
+      - d sería el desplazamiento
