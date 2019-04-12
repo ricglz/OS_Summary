@@ -80,3 +80,22 @@
       - s sería el segmento donde se encuentran las páginas
       - p sería la página que se encuentra en el segmento
       - d sería el desplazamiento
+4. ***Administración de Memoria Virtual II***
+  - Los procesos compiten por todos los marcos de página
+  - Hay diferentes asignacios para estos marcos de página:
+    - Asignación máxima, a cada proceso se le asigna uno máximo.
+    - Asignación equitativa, todos los procesos tienen la misma cantidad de marcos.
+    - Asignación proporcional
+      - Se le asigna marcos de acuerdo al tamaño en KB de los procesos.
+      - marcos =  tamaño_proceso / suma_de_tamaños_de_procesos * max_cantidad_de_marcos
+    - Asignación por prioridades
+      - Se le asigna marcos de acuerdo a la prioridad
+      - Si el número de prioridad es mayor, se tiene mayor prioridad. marcos = prioridad / suma_de_prioridades * max_cantidad_de_marcos. **Nota** la prioridad mínima debe ser 1.
+      - Si el número de prioridad es mayor, se tiene mayor prioridad. marcos = (max_prioridad - prioridad + 1) / suma_de_prioridades * max_cantidad_de_marcos.
+  - Tipos de reemplazo
+    - Global. Escoger un marco de página de todos los marcos que hay en todos los procesos.
+    - Local. Escoger un marco de página de todos los marcos que hay en un sólo proceso.
+  - Thrashing: Cuando un proceso invierte más tiempo paginando, que ejecutando instrucciones de los procesos.
+  - Equemas diseñados para evitar "thrashing"
+    - Working Set: Teniendo un tiempo X y un número N, haces un conjunto de los últimas N referencias desde el tiempo X.
+    - Modelo de Page Fault Frecuency
